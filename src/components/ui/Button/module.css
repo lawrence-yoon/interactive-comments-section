@@ -1,0 +1,87 @@
+/* ModalDelete, ModalCancel, Send, ReplySubmit, Update*/
+
+.btn-style-1 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.75rem 1.25rem;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+}
+
+.modal-delete {
+  background-color: hsl(358, 79%, 66%);
+}
+
+.modal-cancel {
+  background-color: hsl(211, 10%, 45%);
+}
+
+.reply-alt,
+.send,
+.update {
+  background-color: hsl(238, 40%, 52%);
+}
+
+/* Reply, Edit, Delete*/
+
+.btn-style-2 {
+  font-family: "Rubik", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 0.75rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.reply,
+.edit {
+  color: hsl(238, 40%, 52%);
+}
+
+.delete {
+  color: hsl(358, 79%, 66%);
+}
+
+/* Plus and Minus*/
+
+.vote {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.875rem;
+  /* set border to none before production*/
+  border: 1px solid black;
+  background-color: hsl(228, 33%, 97%);
+  color: hsl(211, 10%, 45%);
+}
+.upvote {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.downvote {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+/* Media breakout */
+@media only screen and (min-device-width: 1440px) {
+  .upvote {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-left-radius: 0;
+  }
+
+  .downvote {
+    border-bottom-right-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    border-top-right-radius: 0;
+  }
+}
+
+/* Hovers */
