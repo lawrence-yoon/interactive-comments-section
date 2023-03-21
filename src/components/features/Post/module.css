@@ -1,0 +1,35 @@
+.id-container {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-size: 1.25rem;
+}
+
+.id-container .username {
+  font-weight: 500;
+}
+
+.id-container .timestamp {
+  font-weight: 400;
+  color: hsl(211, 10%, 45%);
+}
+
+.content-container .content {
+  color: hsl(211, 10%, 45%);
+  font-size: 1rem;
+}
+
+.vote-container {
+  display: flex;
+}
+
+.score-container {
+  font-size: 1.125rem;
+  color: hsl(238, 40%, 52%);
+  border: 1px black solid;
+  width: 41px;
+  height: 41px;
+  text-align: center;
+  padding-top: 7px;
+  font-weight: 500;
+}

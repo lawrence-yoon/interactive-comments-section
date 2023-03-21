@@ -1,5 +1,9 @@
 import "./module.css";
-import { FaReply, FaTrash, FaPen, FaPlus, FaMinus } from "react-icons/fa";
+import { ReactComponent as DeleteIcon } from "/public/icon-delete.svg";
+import { ReactComponent as EditIcon } from "/public/icon-edit.svg";
+import { ReactComponent as MinusIcon } from "/public/icon-minus.svg";
+import { ReactComponent as PlusIcon } from "/public/icon-plus.svg";
+import { ReactComponent as ReplyIcon } from "/public/icon-reply.svg";
 
 export default function Button() {
   return <button>Button</button>;
@@ -77,7 +81,7 @@ export function ReplyButton({ props }) {
         console.log("reply button pressed");
       }}
     >
-      <FaReply /> <span>Reply</span>
+      <ReplyIcon /> <span>Reply</span>
     </button>
   );
 }
@@ -90,7 +94,7 @@ export function EditButton({ props }) {
         console.log("edit button pressed");
       }}
     >
-      <FaPen /> <span>Edit</span>
+      <EditIcon /> <span>Edit</span>
     </button>
   );
 }
@@ -103,7 +107,7 @@ export function DeleteButton({ props }) {
         console.log("delete button pressed");
       }}
     >
-      <FaTrash /> <span>Delete</span>
+      <DeleteIcon /> <span>Delete</span>
     </button>
   );
 }
@@ -116,7 +120,7 @@ export function UpvoteButton({ props }) {
         console.log("upvote button pressed");
       }}
     >
-      <FaPlus />
+      <PlusIcon />
     </button>
   );
 }
@@ -129,7 +133,7 @@ export function DownvoteButton({ props }) {
         console.log("downvote button pressed");
       }}
     >
-      <FaMinus />
+      <MinusIcon />
     </button>
   );
 }
