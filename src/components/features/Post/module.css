@@ -1,6 +1,11 @@
+.reply-container {
+  padding-left: 1rem;
+  border-left: 2px hsl(211, 10%, 45%) solid;
+}
+
 .card-container {
   /*this margin left will be used when nesting replies
-  
+
     margin-left: 1rem;
   */
   padding: 1rem;

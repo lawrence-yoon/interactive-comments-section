@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import Attribution from "./components/features/Attribution";
+import PostArea from "./components/features/PostArea";
 import Post from "./components/features/Post";
 import {
   ModalDeleteButton,
@@ -18,11 +19,11 @@ import {
 import data from "../data.json";
 
 function App() {
-  const [appData, setAppData] = useState(data);
-  console.log(appData);
+  console.log(data);
   return (
     <div className="App">
-      <Post {...appData} />
+      {/* <Post {...appData} /> */}
+      <PostArea {...data} />
       <Attribution />
       {/* <ModalDeleteButton />
       <ModalCancelButton />
