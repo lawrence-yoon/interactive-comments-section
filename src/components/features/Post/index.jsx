@@ -27,13 +27,6 @@ export default function Post({ currentUser, comments }) {
         </p>
       </div>
       <div className="buttons-container">
-        <div className="vote-container">
-          <UpvoteButton />
-          <div className="score-container">
-            <p>{score}</p>
-          </div>
-          <DownvoteButton />
-        </div>
         {currentUser.username === username ? (
           <>
             <DeleteButton />
@@ -42,6 +35,13 @@ export default function Post({ currentUser, comments }) {
         ) : (
           <ReplyButton />
         )}
+      </div>
+      <div className="vote-container">
+        <UpvoteButton />
+        <div className="score-container">
+          <p>{score}</p>
+        </div>
+        <DownvoteButton />
       </div>
     </div>
   );
