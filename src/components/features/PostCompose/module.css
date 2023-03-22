@@ -33,7 +33,7 @@
   margin: 1rem 0 1rem auto;
 }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   .compose-post {
     grid-template-columns: auto auto auto;
     grid-template-rows: auto;

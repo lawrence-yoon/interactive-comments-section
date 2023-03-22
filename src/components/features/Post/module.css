@@ -94,7 +94,7 @@
 
 /* We will be using grid for these containers. */
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   .reply-container {
     margin-left: 2.75rem;
     padding-left: 2.75rem;
