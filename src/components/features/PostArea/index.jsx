@@ -11,6 +11,7 @@ function PostArea({ currentUser, comments }) {
             commentData={comment}
             currentUser={currentUser}
             replyLevel={replyLevel}
+            originalPoster={comment.user.username}
           />
         ))}
     </div>

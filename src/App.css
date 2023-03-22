@@ -7,6 +7,12 @@ body {
   background-color: hsl(211, 10%, 45%);
   background-color: hsl(223, 19%, 93%); */
   /* background-color: hsl(228, 33%, 97%); */
-  background-color: white;
+  background-color: hsl(228, 33%, 97%);
   font-family: "Rubik", sans-serif;
+}
+
+.App {
+  max-width: 768px;
+  display: grid;
+  margin: 0 auto;
 }

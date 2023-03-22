@@ -8,6 +8,7 @@ import {
 } from "/src/components/ui/Button";
 
 export default function Post({
+  originalPoster,
   currentUser,
   commentData,
   replyLevel,
@@ -32,7 +33,7 @@ export default function Post({
         </div>
         <div className="content-container">
           <p className="content">
-            {replyLevel > 0 && <span>@{user.username} </span>}
+            {replyLevel > 0 && <span>@{originalPoster} </span>}
             {/* <span className="reply-username">isReply?@poster </span> */}
             {content}
           </p>
@@ -58,6 +59,7 @@ export default function Post({
       {replies &&
         replies.map((reply, index) => (
           <Post
+            originalPoster={originalPoster}
             commentData={reply}
             currentUser={currentUser}
             replyLevel={replyLevel + 1}
