@@ -42,6 +42,7 @@
 
 .id-container .timestamp {
   font-weight: 400;
+  white-space: nowrap;
   color: hsl(211, 10%, 45%);
 }
 
@@ -92,3 +93,42 @@
 }
 
 /* We will be using grid for these containers. */
+
+@media only screen and (min-device-width: 768px) {
+  .reply-container {
+    margin-left: 2.75rem;
+    padding-left: 2.75rem;
+    padding-top: 1rem;
+    border-left: 2px hsl(223, 19%, 93%) solid;
+  }
+
+  .card-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
+  }
+
+  .id-container {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1rem;
+  }
+
+  .content-container {
+    grid-area: 2 / 2 / 3 / 4;
+  }
+
+  .vote-container {
+    grid-area: 1 / 1 / 3 / 2;
+    flex-direction: column;
+    height: 41px;
+    margin: 0;
+    padding: 0.5rem 1.5rem 0 0.5rem;
+  }
+
+  .buttons-container {
+    grid-area: 1 / 3 / 2 / 4;
+  }
+}
