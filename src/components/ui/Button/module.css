@@ -70,7 +70,7 @@
   align-items: center;
   padding: 0.875rem;
   /* set border to none before production*/
-  border: 1px solid black;
+  border: 1px solid transparent;
   background-color: hsl(228, 33%, 97%);
   color: hsl(211, 10%, 45%);
 }

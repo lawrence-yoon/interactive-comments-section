@@ -9,7 +9,6 @@
   background-color: white;
   width: 100%;
   color: white;
-  border: 1px black solid;
   padding: 1rem 1rem 0 1rem;
   border-radius: 0.5rem;
 }
@@ -21,6 +20,7 @@
   font-size: 1rem;
   padding: 1rem;
   border-radius: 0.5rem;
+  border-color: hsl(223, 19%, 93%);
 }
 
 .compose-post img {

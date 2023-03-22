@@ -7,20 +7,15 @@ import {
   DownvoteButton,
 } from "/src/components/ui/Button";
 
-export default function Post({
-  originalPoster,
-  currentUser,
-  commentData,
-  replyLevel,
-  replyIndex,
-}) {
-  const { id, content, createdAt, score, user, replies } = commentData;
+export default function Post({ currentUser, commentData, replyIndex }) {
+  const { id, content, createdAt, score, user, replies, replyingTo } =
+    commentData;
   const { username, image } = user;
 
   return (
     <div
       className={
-        (replyLevel > 0 && "reply-container") +
+        (replyingTo && "reply-container") +
         (replyIndex === 0 ? " reply-first-item" : "")
       }
     >
@@ -33,7 +28,7 @@ export default function Post({
         </div>
         <div className="content-container">
           <p className="content">
-            {replyLevel > 0 && <span>@{originalPoster} </span>}
+            {replyingTo && <span>@{replyingTo} </span>}
             {/* <span className="reply-username">isReply?@poster </span> */}
             {content}
           </p>
@@ -59,10 +54,8 @@ export default function Post({
       {replies &&
         replies.map((reply, index) => (
           <Post
-            originalPoster={originalPoster}
             commentData={reply}
             currentUser={currentUser}
-            replyLevel={replyLevel + 1}
             replyIndex={index}
           />
         ))}
