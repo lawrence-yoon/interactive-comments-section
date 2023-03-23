@@ -9,91 +9,56 @@ export default function Button() {
   return <button>Button</button>;
 }
 
-export function ModalDeleteButton({ props }) {
+export function ModalDeleteButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-1 modal-delete"
-      onClick={() => {
-        console.log("delete button pressed");
-      }}
-    >
+    <button className="btn-style-1 modal-delete" onClick={handleClick}>
       YES, DELETE
     </button>
   );
 }
 
-export function ModalCancelButton({ props }) {
+export function ModalCancelButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-1 modal-cancel"
-      onClick={() => {
-        console.log("cancel button pressed");
-      }}
-    >
+    <button className="btn-style-1 modal-cancel" onClick={handleClick}>
       NO, CANCEL
     </button>
   );
 }
 
-export function ReplySubmitButton({ props }) {
+export function ReplySubmitButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-1 reply-alt"
-      onClick={() => {
-        console.log("reply button pressed");
-      }}
-    >
+    <button className="btn-style-1 reply-alt" onClick={handleClick}>
       REPLY
     </button>
   );
 }
-export function SendButton({ props }) {
+export function SendButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-1 send"
-      onClick={() => {
-        console.log("send button pressed");
-      }}
-    >
+    <button className="btn-style-1 send" onClick={handleClick}>
       SEND
     </button>
   );
 }
 
-export function UpdateButton({ props }) {
+export function UpdateButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-1 update"
-      onClick={() => {
-        console.log("update button pressed");
-      }}
-    >
+    <button className="btn-style-1 update" onClick={handleClick}>
       UPDATE
     </button>
   );
 }
 
-export function ReplyButton({ props }) {
+export function ReplyButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-2 reply"
-      onClick={() => {
-        console.log("reply button pressed");
-      }}
-    >
+    <button className="btn-style-2 reply" onClick={handleClick}>
       <ReplyIcon /> <span>Reply</span>
     </button>
   );
 }
 
-export function EditButton({ props }) {
+export function EditButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-2 edit"
-      onClick={() => {
-        console.log("edit button pressed");
-      }}
-    >
+    <button className="btn-style-2 edit" onClick={handleClick}>
       <EditIcon /> <span>Edit</span>
     </button>
   );
@@ -107,27 +72,17 @@ export function DeleteButton({ handleClick }) {
   );
 }
 
-export function UpvoteButton({ props }) {
+export function UpvoteButton({ handleClick }) {
   return (
-    <button
-      className="vote upvote"
-      onClick={() => {
-        console.log("upvote button pressed");
-      }}
-    >
+    <button className="vote upvote" onClick={handleClick}>
       <PlusIcon />
     </button>
   );
 }
 
-export function DownvoteButton({ props }) {
+export function DownvoteButton({ handleClick }) {
   return (
-    <button
-      className="vote downvote"
-      onClick={() => {
-        console.log("downvote button pressed");
-      }}
-    >
+    <button className="vote downvote" onClick={handleClick}>
       <MinusIcon />
     </button>
   );

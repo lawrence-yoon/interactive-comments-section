@@ -1,13 +1,14 @@
 import "./module.css";
-import Post from "../Post";
 
-function PostArea({ currentUser, comments }) {
+function renderPosts({ Component, appData, handleOpenModal }) {
+  const { comments, currentUser } = appData;
   const replyLevel = 0;
   return (
     <div className="post-area-container">
       {comments &&
         comments.map((comment) => (
-          <Post
+          <Component
+            handleOpenModal={handleOpenModal}
             commentData={comment}
             currentUser={currentUser}
             replyLevel={replyLevel}
@@ -17,4 +18,4 @@ function PostArea({ currentUser, comments }) {
   );
 }
 
-export default PostArea;
+export default renderPosts;

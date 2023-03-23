@@ -7,7 +7,12 @@ import {
   DownvoteButton,
 } from "/src/components/ui/Button";
 
-export default function Post({ currentUser, commentData, replyIndex }) {
+export default function Post({
+  currentUser,
+  commentData,
+  replyIndex,
+  handleOpenModal,
+}) {
   const { id, content, createdAt, score, user, replies, replyingTo } =
     commentData;
   const { username, image } = user;
@@ -36,9 +41,7 @@ export default function Post({ currentUser, commentData, replyIndex }) {
         <div className="buttons-container">
           {currentUser.username === username ? (
             <>
-              <DeleteButton
-                handleClick={() => console.log("handle click from post")}
-              />
+              <DeleteButton handleClick={handleOpenModal} />
               <EditButton />
             </>
           ) : (
@@ -61,6 +64,7 @@ export default function Post({ currentUser, commentData, replyIndex }) {
       {replies &&
         replies.map((reply, index) => (
           <Post
+            handleOpenModal={handleOpenModal}
             commentData={reply}
             currentUser={currentUser}
             replyIndex={index}

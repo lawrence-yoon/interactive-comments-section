@@ -1,9 +1,9 @@
 import "./module.css";
 import { ModalCancelButton, ModalDeleteButton } from "../../ui/Button";
 
-function Modal({ props }) {
+function Modal({ handleCloseModal }) {
   return (
-    <div className="modal-background" onClick={() => props.handleDeleteModal()}>
+    <div className="modal-background" onClick={handleCloseModal}>
       <div
         className="modal-content"
         onClick={(e) => {
@@ -17,7 +17,7 @@ function Modal({ props }) {
           comment and can't be undone.
         </p>
         <div className="modal-button-container">
-          <ModalCancelButton />
+          <ModalCancelButton handleClick={handleCloseModal} />
           <ModalDeleteButton />
         </div>
       </div>
