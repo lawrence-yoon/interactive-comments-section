@@ -99,14 +99,9 @@ export function EditButton({ props }) {
   );
 }
 
-export function DeleteButton({ props }) {
+export function DeleteButton({ handleClick }) {
   return (
-    <button
-      className="btn-style-2 delete"
-      onClick={() => {
-        console.log("delete button pressed");
-      }}
-    >
+    <button className="btn-style-2 delete" onClick={handleClick}>
       <DeleteIcon /> <span>Delete</span>
     </button>
   );

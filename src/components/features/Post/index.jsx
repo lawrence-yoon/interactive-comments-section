@@ -36,7 +36,9 @@ export default function Post({ currentUser, commentData, replyIndex }) {
         <div className="buttons-container">
           {currentUser.username === username ? (
             <>
-              <DeleteButton />
+              <DeleteButton
+                handleClick={() => console.log("handle click from post")}
+              />
               <EditButton />
             </>
           ) : (
@@ -51,6 +53,11 @@ export default function Post({ currentUser, commentData, replyIndex }) {
           <DownvoteButton />
         </div>
       </div>
+      {/* need to make new element, effectively a new reply textarea for 
+      making a response. it will be a postcompose sized similar to 
+      postarea size. make it conditional rendering, toggled on 
+      when a certain boolean state is true, like when the reply button is 
+      pressed.*/}
       {replies &&
         replies.map((reply, index) => (
           <Post

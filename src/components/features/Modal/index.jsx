@@ -1,12 +1,9 @@
 import "./module.css";
 import { ModalCancelButton, ModalDeleteButton } from "../../ui/Button";
 
-function Modal() {
+function Modal({ props }) {
   return (
-    <div
-      className="modal-background"
-      onClick={() => console.log("handleCancel")}
-    >
+    <div className="modal-background" onClick={() => props.handleDeleteModal()}>
       <div
         className="modal-content"
         onClick={(e) => {
