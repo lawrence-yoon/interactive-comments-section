@@ -32,9 +32,9 @@ export function ReplySubmitButton({ handleClick }) {
     </button>
   );
 }
-export function SendButton({ handleClick }) {
+export function SendButton({ messageId, handleClick }) {
   return (
-    <button className="btn-style-1 send" onClick={handleClick}>
+    <button className="btn-style-1 send" onClick={() => handleClick(messageId)}>
       SEND
     </button>
   );
@@ -72,17 +72,17 @@ export function DeleteButton({ handleClick }) {
   );
 }
 
-export function UpvoteButton({ handleClick }) {
+export function UpvoteButton({ id, handleClick }) {
   return (
-    <button className="vote upvote" onClick={handleClick}>
+    <button className="vote upvote" onClick={() => handleClick(id)}>
       <PlusIcon />
     </button>
   );
 }
 
-export function DownvoteButton({ handleClick }) {
+export function DownvoteButton({ id, handleClick }) {
   return (
-    <button className="vote downvote" onClick={handleClick}>
+    <button className="vote downvote" onClick={() => handleClick(id)}>
       <MinusIcon />
     </button>
   );
