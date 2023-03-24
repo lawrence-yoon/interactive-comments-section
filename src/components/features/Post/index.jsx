@@ -13,6 +13,7 @@ export default function Post({
   currentUser,
   commentData,
   replyIndex,
+  //maybe instead of passing down this setter function, we need to pass down a function that contains this setter function one level up, otherwise we need to pass all the apps data.
   handleOpenModal,
   handleReplyClick,
   handleUpvoteClick,
@@ -35,13 +36,17 @@ export default function Post({
   function handleUpdate() {
     // handleUpdateButton();
     console.log("handleupdatebutton clicked.");
+    {
+      replyingTo
+        ? handleUpdateButton(commentData, text.content, id)
+        : handleUpdateButton(commentData, text.content);
+    }
+    console.log("commentindex: " + replyIndex);
     setIsEditActive(false);
   }
 
   function handleEdit() {
-    setText(content);
-    console.log(content);
-    console.log(text);
+    setText(commentData);
     setIsEditActive(true);
   }
 
@@ -61,10 +66,13 @@ export default function Post({
         </div>
         <div className="content-container">
           {isEditActive ? (
-            <>
-              <TextArea handleTextChange={handleTextChange} text={text} />
-              <UpdateButton handleClick={handleUpdate} />
-            </>
+            <div className="edit-container">
+              <TextArea
+                handleTextChange={handleTextChange}
+                text={text.content}
+              />
+              <UpdateButton id={id} handleClick={handleUpdate} />
+            </div>
           ) : (
             <p className="content">
               {replyingTo && <span>@{replyingTo} </span>}
@@ -104,7 +112,7 @@ export default function Post({
             handleReplyClick={handleReplyClick}
             handleUpvoteClick={handleUpvoteClick}
             handleDownvoteClick={handleDownvoteClick}
-            handleUpdateButton={handleUpdateButton}
+            handleUpdateButton={handleUpdate}
             commentData={reply}
             currentUser={currentUser}
             replyIndex={index}

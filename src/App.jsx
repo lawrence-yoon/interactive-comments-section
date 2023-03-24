@@ -27,6 +27,57 @@ function App() {
   //   setAppData({...appData, })
   // }
 
+  function handleUpdateButton(comment, text, replyId) {
+    // function findById(data, id) {
+    //   function iter(a) {
+    //     if (a.id === id) {
+    //       result = a;
+    //       return true;
+    //     }
+    //     return Array.isArray(a.children) && a.children.some(iter);
+    //   }
+    //   let result;
+    //   data.some(iter);
+    //   return result;
+    // }
+    // console.log("passed in id param: " + replyId);
+    // console.log("findbyid: " + JSON.stringify(findById(comments, replyId)));
+
+    function findAndReplaceCommentText() {
+      const copyAppData = appData;
+      {
+        replyId
+          ? (copyAppData.comments[
+              comments.findIndex((elem) => elem.id === replyId)
+            ].replies[
+              replies.findIndex((elem2) => elem2.id === comment.id)
+            ].content = text)
+          : (copyAppData.comments[
+              comments.findIndex((elem) => elem.id === comment.id)
+            ].content = text);
+      }
+      console.log(text);
+      // copyAppData.comments[
+      //   comments.findIndex((elem) => elem.id === comment.id)
+      // ].replies[replies.findIndex((elem) => elem.id === comment.id)].content =
+      //   text;
+
+      setAppData(copyAppData);
+    }
+
+    findAndReplaceCommentText();
+    // setAppData({
+    //   comments: [
+    //     ...comments,
+    //     {
+    //       ...comment,
+    //       content: text,
+    //     },
+    //   ],
+    //   currentUser: currentUser,
+    // });
+  }
+
   function voteClick(id) {
     console.log("clicked vote button for id: " + id);
   }
@@ -39,10 +90,12 @@ function App() {
           comments.map((comment) => (
             <Post
               key={comment.id}
+              setAppData={setAppData}
               handleReplyClick={() => console.log("handlereplyclick clicked")}
               handleOpenModal={() => setIsModalOpen(true)}
               handleUpvoteClick={voteClick}
               handleDownvoteClick={voteClick}
+              handleUpdateButton={handleUpdateButton}
               commentData={comment}
               currentUser={currentUser}
             />
