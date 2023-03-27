@@ -27,57 +27,33 @@ function App() {
   //   setAppData({...appData, })
   // }
 
-  function handleUpdateButton(comment, text, replyId) {
-    // function findById(data, id) {
-    //   function iter(a) {
-    //     if (a.id === id) {
-    //       result = a;
-    //       return true;
-    //     }
-    //     return Array.isArray(a.children) && a.children.some(iter);
-    //   }
-    //   let result;
-    //   data.some(iter);
-    //   return result;
-    // }
-    // console.log("passed in id param: " + replyId);
-    // console.log("findbyid: " + JSON.stringify(findById(comments, replyId)));
+  function handleUpdateButton(comment, text) {
+    console.log("comment: " + comment);
+    console.log("text: " + text);
+    const copyAppData = appData;
 
-    function findAndReplaceCommentText() {
-      const copyAppData = appData;
-      {
-        replyId
-          ? (copyAppData.comments[
-              comments.findIndex((elem) => elem.id === replyId)
-            ].replies[
-              replies.findIndex((elem2) => elem2.id === comment.id)
-            ].content = text)
-          : (copyAppData.comments[
-              comments.findIndex((elem) => elem.id === comment.id)
-            ].content = text);
-      }
-      console.log(text);
-      // copyAppData.comments[
-      //   comments.findIndex((elem) => elem.id === comment.id)
-      // ].replies[replies.findIndex((elem) => elem.id === comment.id)].content =
-      //   text;
+    copyAppData.comments[
+      comments.findIndex((elem) => elem.id === comment.id)
+    ].content = text;
 
-      setAppData(copyAppData);
-    }
-
-    findAndReplaceCommentText();
-    // setAppData({
-    //   comments: [
-    //     ...comments,
-    //     {
-    //       ...comment,
-    //       content: text,
-    //     },
-    //   ],
-    //   currentUser: currentUser,
-    // });
+    console.log("comment :" + JSON.stringify(comment));
+    setAppData(copyAppData);
   }
 
+  function handleUpdateButton2(comment, text, replyId) {
+    console.log("comment: " + comment);
+    console.log("text: " + text);
+    console.log("app level handleupdatebutton replyid: " + replyId);
+    const copyAppData = appData;
+    copyAppData.comments[
+      comments.findIndex((elem) => elem.id === comment.id)
+    ].replies[replies.findIndex((elem2) => elem2.id === replyId)].content =
+      text;
+    console.log("comment :" + JSON.stringify(comment));
+    console.log("replyId: " + replyId);
+
+    setAppData(copyAppData);
+  }
   function voteClick(id) {
     console.log("clicked vote button for id: " + id);
   }
@@ -96,6 +72,7 @@ function App() {
               handleUpvoteClick={voteClick}
               handleDownvoteClick={voteClick}
               handleUpdateButton={handleUpdateButton}
+              handleUpdateButton2={handleUpdateButton2}
               commentData={comment}
               currentUser={currentUser}
             />

@@ -9,16 +9,19 @@ import {
   UpdateButton,
 } from "/src/components/ui/Button";
 import TextArea from "../../ui/TextArea";
+
 export default function Post({
   currentUser,
   commentData,
   replyIndex,
+  replyId,
   //maybe instead of passing down this setter function, we need to pass down a function that contains this setter function one level up, otherwise we need to pass all the apps data.
   handleOpenModal,
   handleReplyClick,
   handleUpvoteClick,
   handleDownvoteClick,
   handleUpdateButton,
+  handleUpdateButton2,
 }) {
   const { id, content, createdAt, score, user, replies, replyingTo } =
     commentData;
@@ -36,12 +39,20 @@ export default function Post({
   function handleUpdate() {
     // handleUpdateButton();
     console.log("handleupdatebutton clicked.");
-    {
-      replyingTo
-        ? handleUpdateButton(commentData, text.content, id)
-        : handleUpdateButton(commentData, text.content);
-    }
-    console.log("commentindex: " + replyIndex);
+    handleUpdateButton(commentData, text.content);
+
+    console.log("commentData: " + JSON.stringify(commentData));
+    console.log("Post level handleUpdate reply id: " + replyId);
+    setIsEditActive(false);
+  }
+
+  function handleUpdate2() {
+    // handleUpdateButton();
+    console.log("handleupdatebutton2 clicked.");
+    handleUpdateButton2(commentData, text.content, replyId);
+
+    console.log("commentData: " + JSON.stringify(commentData));
+    console.log("Post level handleUpdate reply id: " + replyId);
     setIsEditActive(false);
   }
 
@@ -113,9 +124,11 @@ export default function Post({
             handleUpvoteClick={handleUpvoteClick}
             handleDownvoteClick={handleDownvoteClick}
             handleUpdateButton={handleUpdate}
+            handleUpdateButton2={handleUpdate2}
             commentData={reply}
             currentUser={currentUser}
             replyIndex={index}
+            replyId={reply.id}
           />
         ))}
     </div>
