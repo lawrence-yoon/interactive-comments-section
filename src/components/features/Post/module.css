@@ -66,6 +66,7 @@
   padding: 1rem;
   border-radius: 0.5rem;
   border-color: hsl(223, 19%, 93%);
+  width: 100%;
 }
 
 .edit-container button {
