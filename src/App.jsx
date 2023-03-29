@@ -138,6 +138,16 @@ function App() {
     console.log(text);
   }
 
+  function handleVotes(currentUser, commentId) {
+    // check currentUser, maybe create a new array under currentUser, for
+    // voted on comments. maybe id:commentId, and upvoted:boolean. and downvoted:boolean
+    // have a conditional, if both are false, able to vote.
+    // this would make it so that if one is true, cannot vote. not until
+    // both are false. wait, have the upvote or downvote button to apply
+    // true to clicked button, false to other.
+    // votes:[{id: 5, vote:"down"]
+  }
+
   return (
     <div className="App">
       <PostArea>
