@@ -1,7 +1,7 @@
 import "./module.css";
 import { ModalCancelButton, ModalDeleteButton } from "../../ui/Button";
 
-function Modal({ handleCloseModal }) {
+function Modal({ handleCloseModal, handleDeleteButton }) {
   return (
     <div className="modal-background" onClick={handleCloseModal}>
       <div
@@ -18,7 +18,7 @@ function Modal({ handleCloseModal }) {
         </p>
         <div className="modal-button-container">
           <ModalCancelButton handleClick={handleCloseModal} />
-          <ModalDeleteButton />
+          <ModalDeleteButton handleClick={handleDeleteButton} />
         </div>
       </div>
     </div>

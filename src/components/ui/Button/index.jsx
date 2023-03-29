@@ -32,9 +32,9 @@ export function ReplySubmitButton({ handleClick }) {
     </button>
   );
 }
-export function SendButton({ messageId, handleClick }) {
+export function SendButton({ handleClick }) {
   return (
-    <button className="btn-style-1 send" onClick={() => handleClick(messageId)}>
+    <button className="btn-style-1 send" onClick={handleClick}>
       SEND
     </button>
   );
