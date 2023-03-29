@@ -20,6 +20,7 @@ export default function Post({
   handleUpvoteClick,
   handleDownvoteClick,
   handleUpdateButton,
+  handleSubmitButton,
 }) {
   const { id, content, createdAt, score, user, replies, replyingTo } =
     commentData;
@@ -51,7 +52,8 @@ export default function Post({
     setIsReplyActive(true);
   }
 
-  function handleSubmit() {
+  function handleSubmit(passText) {
+    handleSubmitButton(passText);
     setIsReplyActive(false);
   }
 
@@ -108,8 +110,8 @@ export default function Post({
         {isReplyActive && (
           <PostCompose
             currentUser={currentUser}
-            handleSubmitButton={() => console.log("handlesubmitbutton fired")}
-            isReplyActive={true}
+            handleSubmitButton={handleSubmit}
+            isReplyActive={isReplyActive}
           />
         )}
 
@@ -127,6 +129,7 @@ export default function Post({
               handleUpvoteClick={handleUpvoteClick}
               handleDownvoteClick={handleDownvoteClick}
               handleUpdateButton={handleUpdateButton}
+              handleSubmitButton={handleSubmitButton}
               commentData={reply}
               currentUser={currentUser}
               replyIndex={index}

@@ -14,6 +14,8 @@ function PostCompose({ currentUser, handleSubmitButton, isReplyActive }) {
 
   function handleReply() {
     console.log("reply clicked");
+    handleSubmitButton(text);
+    setText(initialTextState);
   }
 
   return (

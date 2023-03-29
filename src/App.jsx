@@ -119,6 +119,25 @@ function App() {
     setCommentCounter((prev) => prev + 1);
   }
 
+  function submitReplyComment(text) {
+    // setAppData({
+    //   comments: [
+    //     ...comments,
+    //     {
+    //       id: commentCounter,
+    //       content: text,
+    //       createdAt: "just now",
+    //       score: 0,
+    //       user: currentUser,
+    //       replies: [...replies, ],
+    //     },
+    //   ],
+    //   currentUser: currentUser,
+    // });
+    // setCommentCounter((prev) => prev + 1);
+    console.log(text);
+  }
+
   return (
     <div className="App">
       <PostArea>
@@ -131,6 +150,7 @@ function App() {
               handleUpvoteClick={voteClick}
               handleDownvoteClick={voteClick}
               handleUpdateButton={updateContentWithId}
+              handleSubmitButton={submitReplyComment}
               commentData={comment}
               currentUser={currentUser}
             />
