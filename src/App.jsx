@@ -53,36 +53,28 @@ function App() {
     setAppData(updatedAppData);
   }
 
-  function deleteCommentWithId(commentId) {
-    const updatedComments = comments.map((comment) => {
-      if (comment.id === commentId) {
-        return {
-          ...comment,
-          content: "DELETED",
-        };
-      } else if (comment.replies) {
-        return {
-          ...comment,
-          replies: comment.replies.map((reply) => {
-            if (reply.id === commentId) {
-              return {
-                ...reply,
-                content: "DELETED",
-              };
-            } else {
-              return reply;
-            }
-          }),
-        };
-      } else {
-        return comment;
+  function deleteCommentById(commentId) {
+    const revisedComments = comments.reduce((acc, elem) => {
+      if (elem.id !== commentId) {
+        if (elem.replies) {
+          const revElem = {
+            ...elem,
+            replies: elem.replies.reduce((acc2, elem2) => {
+              if (elem2.id !== commentId) {
+                acc2.push(elem2);
+              }
+              return acc2;
+            }, []),
+          };
+          acc.push(revElem);
+        } else {
+          acc.push(elem);
+          console.log("ran concat for first if");
+        }
       }
-    });
-    const updatedAppData = {
-      currentUser: currentUser,
-      comments: updatedComments,
-    };
-    setAppData(updatedAppData);
+      return acc;
+    }, []);
+    setAppData({ currentUser: currentUser, comments: revisedComments });
   }
 
   function modalReset() {
@@ -97,7 +89,7 @@ function App() {
   }
 
   function handleDelete() {
-    deleteCommentWithId(modalId);
+    deleteCommentById(modalId);
     setIsModalOpen(false);
   }
 
@@ -119,23 +111,31 @@ function App() {
     setCommentCounter((prev) => prev + 1);
   }
 
-  function submitReplyComment(text) {
-    // setAppData({
-    //   comments: [
-    //     ...comments,
-    //     {
-    //       id: commentCounter,
-    //       content: text,
-    //       createdAt: "just now",
-    //       score: 0,
-    //       user: currentUser,
-    //       replies: [...replies, ],
-    //     },
-    //   ],
-    //   currentUser: currentUser,
-    // });
-    // setCommentCounter((prev) => prev + 1);
-    console.log(text);
+  function submitReplyComment(commentId, commentData, text) {
+    const revisedComments = comments.reduce((acc, elem) => {
+      if (elem.id === commentId) {
+        const revisedElem = {
+          ...elem,
+          replies: [
+            ...elem.replies,
+            {
+              id: commentCounter,
+              content: text,
+              createdAt: "just now",
+              score: 0,
+              user: currentUser,
+              replyingTo: commentData.user.username,
+            },
+          ],
+        };
+        acc.push(revisedElem);
+      } else {
+        acc.push(elem);
+      }
+      return acc;
+    }, []);
+    setAppData({ currentUser: currentUser, comments: revisedComments });
+    setCommentCounter((prev) => prev + 1);
   }
 
   function handleVotes(currentUser, commentId) {

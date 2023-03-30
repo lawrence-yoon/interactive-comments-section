@@ -21,6 +21,7 @@ export default function Post({
   handleDownvoteClick,
   handleUpdateButton,
   handleSubmitButton,
+  rootId,
 }) {
   const { id, content, createdAt, score, user, replies, replyingTo } =
     commentData;
@@ -51,9 +52,9 @@ export default function Post({
     handleReplyClick();
     setIsReplyActive(true);
   }
-
+  //maybe this works...
   function handleSubmit(passText) {
-    handleSubmitButton(passText);
+    handleSubmitButton(rootId ? rootId : id, commentData, passText);
     setIsReplyActive(false);
   }
 
@@ -133,6 +134,7 @@ export default function Post({
               commentData={reply}
               currentUser={currentUser}
               replyIndex={index}
+              rootId={id}
             />
           ))}
       </div>
