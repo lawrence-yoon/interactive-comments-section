@@ -105,6 +105,10 @@
   font-weight: 500;
 }
 
+.score-modified {
+  color: hsl(212, 24%, 26%);
+}
+
 .buttons-container {
   grid-area: 3 / 2 / 4 / 3;
   display: flex;

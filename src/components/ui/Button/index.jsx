@@ -72,17 +72,23 @@ export function DeleteButton({ handleClick }) {
   );
 }
 
-export function UpvoteButton({ handleClick }) {
+export function UpvoteButton({ isUpvoted, handleClick }) {
   return (
-    <button className="vote upvote" onClick={handleClick}>
+    <button
+      className={isUpvoted ? "vote upvote voteClicked" : "vote upvote"}
+      onClick={handleClick}
+    >
       <PlusIcon />
     </button>
   );
 }
 
-export function DownvoteButton({ handleClick }) {
+export function DownvoteButton({ isDownvoted, handleClick }) {
   return (
-    <button className="vote downvote" onClick={handleClick}>
+    <button
+      className={isDownvoted ? "vote downvote voteClicked" : "vote downvote"}
+      onClick={handleClick}
+    >
       <MinusIcon />
     </button>
   );
