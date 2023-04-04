@@ -19,6 +19,8 @@ export default function Post({
   handleReplyClick,
   handleUpvoteClick,
   handleDownvoteClick,
+  handleUpvoteClick2,
+  handleDownvoteClick2,
   handleUpdateButton,
   handleSubmitButton,
   rootId,
@@ -69,25 +71,29 @@ export default function Post({
   }
 
   function handleUpvote() {
-    if (isUpvoted) {
-      handleDownvoteClick(id);
-      setIsDownvoted(false);
-      setIsUpvoted(false);
-    } else {
+    if (!isUpvoted && !isDownvoted) {
       handleUpvoteClick(id);
-      setIsDownvoted(false);
       setIsUpvoted(true);
+    } else if (!isUpvoted && isDownvoted) {
+      handleUpvoteClick2(id);
+      setIsUpvoted(true);
+      setIsDownvoted(false);
+    } else if (isUpvoted && !isDownvoted) {
+      handleDownvoteClick(id);
+      setIsUpvoted(false);
     }
   }
   function handleDownvote() {
-    if (isDownvoted) {
-      handleUpvoteClick(id);
-      setIsDownvoted(false);
-      setIsUpvoted(false);
-    } else {
+    if (!isDownvoted && !isUpvoted) {
       handleDownvoteClick(id);
       setIsDownvoted(true);
+    } else if (!isDownvoted && isUpvoted) {
+      handleDownvoteClick2(id);
       setIsUpvoted(false);
+      setIsDownvoted(true);
+    } else if (isDownvoted && !isUpvoted) {
+      handleUpvoteClick(id);
+      setIsDownvoted(false);
     }
   }
 
@@ -162,6 +168,8 @@ export default function Post({
               handleReplyClick={handleReplyClick}
               handleUpvoteClick={handleUpvoteClick}
               handleDownvoteClick={handleDownvoteClick}
+              handleUpvoteClick2={handleUpvoteClick2}
+              handleDownvoteClick2={handleDownvoteClick2}
               handleUpdateButton={handleUpdateButton}
               handleSubmitButton={handleSubmitButton}
               commentData={reply}

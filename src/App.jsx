@@ -202,6 +202,70 @@ function App() {
     setAppData(updatedAppData);
   }
 
+  function upvoteScoreWithId2(commentId) {
+    const updatedComments = comments.map((comment) => {
+      if (comment.id === commentId) {
+        return {
+          ...comment,
+          score: comment.score + 2,
+        };
+      } else if (comment.replies) {
+        return {
+          ...comment,
+          replies: comment.replies.map((reply) => {
+            if (reply.id === commentId) {
+              return {
+                ...reply,
+                score: reply.score + 2,
+              };
+            } else {
+              return reply;
+            }
+          }),
+        };
+      } else {
+        return comment;
+      }
+    });
+    const updatedAppData = {
+      currentUser: currentUser,
+      comments: updatedComments,
+    };
+    setAppData(updatedAppData);
+  }
+
+  function downvoteScoreWithId2(commentId) {
+    const updatedComments = comments.map((comment) => {
+      if (comment.id === commentId) {
+        return {
+          ...comment,
+          score: comment.score - 2,
+        };
+      } else if (comment.replies) {
+        return {
+          ...comment,
+          replies: comment.replies.map((reply) => {
+            if (reply.id === commentId) {
+              return {
+                ...reply,
+                score: reply.score - 2,
+              };
+            } else {
+              return reply;
+            }
+          }),
+        };
+      } else {
+        return comment;
+      }
+    });
+    const updatedAppData = {
+      currentUser: currentUser,
+      comments: updatedComments,
+    };
+    setAppData(updatedAppData);
+  }
+
   return (
     <div className="App">
       <PostArea>
@@ -213,6 +277,8 @@ function App() {
               handleOpenModal={modalOpen}
               handleUpvoteClick={upvoteScoreWithId}
               handleDownvoteClick={downvoteScoreWithId}
+              handleUpvoteClick2={upvoteScoreWithId2}
+              handleDownvoteClick2={downvoteScoreWithId2}
               handleUpdateButton={updateContentWithId}
               handleSubmitButton={submitReplyComment}
               commentData={comment}
