@@ -17,9 +17,9 @@ function App() {
   const [commentCounter, setCommentCounter] = useState(6);
   const { comments, currentUser } = appData;
 
-  function voteClick(id) {
-    console.log("clicked vote button for id: " + id);
-  }
+  // function voteClick(id) {
+  //   console.log("clicked vote button for id: " + id);
+  // }
 
   function updateContentWithId(commentId, newContent) {
     const updatedComments = comments.map((comment) => {
@@ -138,14 +138,68 @@ function App() {
     setCommentCounter((prev) => prev + 1);
   }
 
-  function handleVotes(currentUser, commentId) {
-    // check currentUser, maybe create a new array under currentUser, for
-    // voted on comments. maybe id:commentId, and upvoted:boolean. and downvoted:boolean
-    // have a conditional, if both are false, able to vote.
-    // this would make it so that if one is true, cannot vote. not until
-    // both are false. wait, have the upvote or downvote button to apply
-    // true to clicked button, false to other.
-    // votes:[{id: 5, vote:"down"]
+  function upvoteScoreWithId(commentId) {
+    const updatedComments = comments.map((comment) => {
+      if (comment.id === commentId) {
+        return {
+          ...comment,
+          score: comment.score + 1,
+        };
+      } else if (comment.replies) {
+        return {
+          ...comment,
+          replies: comment.replies.map((reply) => {
+            if (reply.id === commentId) {
+              return {
+                ...reply,
+                score: reply.score + 1,
+              };
+            } else {
+              return reply;
+            }
+          }),
+        };
+      } else {
+        return comment;
+      }
+    });
+    const updatedAppData = {
+      currentUser: currentUser,
+      comments: updatedComments,
+    };
+    setAppData(updatedAppData);
+  }
+
+  function downvoteScoreWithId(commentId) {
+    const updatedComments = comments.map((comment) => {
+      if (comment.id === commentId) {
+        return {
+          ...comment,
+          score: comment.score - 1,
+        };
+      } else if (comment.replies) {
+        return {
+          ...comment,
+          replies: comment.replies.map((reply) => {
+            if (reply.id === commentId) {
+              return {
+                ...reply,
+                score: reply.score - 1,
+              };
+            } else {
+              return reply;
+            }
+          }),
+        };
+      } else {
+        return comment;
+      }
+    });
+    const updatedAppData = {
+      currentUser: currentUser,
+      comments: updatedComments,
+    };
+    setAppData(updatedAppData);
   }
 
   return (
@@ -157,8 +211,8 @@ function App() {
               key={comment.id}
               handleReplyClick={() => console.log("handlereplyclick clicked")}
               handleOpenModal={modalOpen}
-              handleUpvoteClick={voteClick}
-              handleDownvoteClick={voteClick}
+              handleUpvoteClick={upvoteScoreWithId}
+              handleDownvoteClick={downvoteScoreWithId}
               handleUpdateButton={updateContentWithId}
               handleSubmitButton={submitReplyComment}
               commentData={comment}

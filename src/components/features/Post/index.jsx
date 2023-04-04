@@ -29,6 +29,16 @@ export default function Post({
   const [isEditActive, setIsEditActive] = useState(false);
   const [isReplyActive, setIsReplyActive] = useState(false);
 
+  // this stuff will have some logic done with the currentUser data passed in
+  // may need to add some code to the buttons themselves, to apply certain classNames
+  // to apply certain styles, like staying the :active pseudoclass. this will be one
+  // of the last things to do.
+  const [isUpvoted, setIsUpvoted] = useState(false);
+  const [isDownvoted, setIsDownvoted] = useState(false);
+  // i was thinking maybe i keep the edit currentuser data handler down here,
+  // but i want to remind myself that i put all that stuff to parent for a reason.
+  // writing the vote to the current user has to be done at app level.
+
   const [text, setText] = useState("");
 
   function handleUpdate() {
@@ -56,6 +66,29 @@ export default function Post({
   function handleSubmit(passText) {
     handleSubmitButton(rootId ? rootId : id, commentData, passText);
     setIsReplyActive(false);
+  }
+
+  function handleUpvote() {
+    if (isUpvoted) {
+      handleDownvoteClick(id);
+      setIsDownvoted(false);
+      setIsUpvoted(false);
+    } else {
+      handleUpvoteClick(id);
+      setIsDownvoted(false);
+      setIsUpvoted(true);
+    }
+  }
+  function handleDownvote() {
+    if (isDownvoted) {
+      handleUpvoteClick(id);
+      setIsDownvoted(false);
+      setIsUpvoted(false);
+    } else {
+      handleDownvoteClick(id);
+      setIsDownvoted(true);
+      setIsUpvoted(false);
+    }
   }
 
   return (
@@ -101,11 +134,11 @@ export default function Post({
             )}
           </div>
           <div className="vote-container">
-            <UpvoteButton id={id} handleClick={handleUpvoteClick} />
+            <UpvoteButton handleClick={handleUpvote} />
             <div className="score-container">
               <p>{score}</p>
             </div>
-            <DownvoteButton id={id} handleClick={handleDownvoteClick} />
+            <DownvoteButton handleClick={handleDownvote} />
           </div>
         </div>
         {isReplyActive && (
